@@ -67,8 +67,8 @@ public class ListaImpl<T extends Comparable<T>> implements Lista<T> {
                 aux = aux.getNext();
             }
 
-            aux.setNext(node);
             node.setNext(aux.getNext());
+            aux.setNext(node);
 
 
             size++;
@@ -81,9 +81,13 @@ public class ListaImpl<T extends Comparable<T>> implements Lista<T> {
     public void remove(T data) {
         if(head == null) {
             System.out.println("Error. Empty list");
-        }else if(head.getData().equals(data)){
+            return;
+        }
+
+        if(head.getData().equals(data)){
             head = head.getNext();
             size--;
+            return;
         }
 
         Node<T> current = head;
@@ -124,20 +128,18 @@ public class ListaImpl<T extends Comparable<T>> implements Lista<T> {
     public void removePosition(int pos) {
         if (pos < 0) {
             System.out.println("Error: " + pos + " <= 1 <= " + size);
-        } else if (pos > size) {
+        } else if (pos >= size) {
             System.out.println("Error: " + pos + " > " + size);
         } else if (pos == 0) {
             removeStart();
         } else {
-            Node<T> current = head;
-            Node<T> prev = current;
+            Node<T> prev = head;
 
             for (int i = 0; i < pos - 1; i++) {
-                prev = current;
-                current = current.getNext();
+                prev = prev.getNext();
             }
 
-            prev.setNext(current.getNext());
+            prev.setNext(prev.getNext().getNext());
             size --;
         }
 
