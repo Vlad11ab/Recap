@@ -5,6 +5,16 @@ public class ListaImpl<T extends Comparable<T>> implements Lista<T> {
     private int size;
 
 
+
+    @Override
+    public Node<T> getHead() {
+        if (head == null) {
+//            System.out.println("Error. Empty list.");
+            return null;
+        }
+            return head;
+    }
+
     @Override
     public void addStart(T data) {
         Node<T> node = new Node();

@@ -51,6 +51,24 @@ public class Main {
         figuraLista.addPosition(p1,0);
         figuraLista.removePosition(2);
 
+        System.out.println("---");
+
+        desen.afisare();
+        desen.duplicare();
+        desen.translatare(2,2);
+        desen.afisare();
+        desen.add(eticheta);
+
+        Figura listaNoua = desen.duplicare();
+
+
+
+
+        listaNoua.afisare();
+        listaNoua.translatare(1,1);
+
+
+
 
         }
     }

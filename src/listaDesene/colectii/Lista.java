@@ -2,6 +2,8 @@ package listaDesene.colectii;
 
 public interface Lista<T extends Comparable<T>> {
 
+    Node<T> getHead();
+
     void addStart(T data);
 
     void addLast(T data);
