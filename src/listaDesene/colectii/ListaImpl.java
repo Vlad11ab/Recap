@@ -55,17 +55,23 @@ public class ListaImpl<T extends Comparable<T>> implements Lista<T> {
     public void addPosition(T data, int pos) {
         if(pos <= 0) {
             addStart(data);
-        } else if(pos >= size){
+        } else if (pos >= size) {
             addLast(data);
         } else {
             Node<T> node = new Node<T>();
             node.setData(data);
 
             Node<T> aux = head;
+            int ct = 0;
 
-            for(int i=0; i < pos - 1; i++){
-                aux = aux.getNext();
+            while (aux.getNext() != null && ct < pos - 1) {
+                aux.setNext(aux.getNext());
+                ct ++;
             }
+
+//            for(int i=0; i < pos - 1; i++){
+//                aux = aux.getNext();
+//            }
 
             node.setNext(aux.getNext());
             aux.setNext(node);
